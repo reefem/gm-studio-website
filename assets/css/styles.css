@@ -1,17 +1,17 @@
 /* ==========================================================================
    GM Studio
-   Colours sampled from the brand's own logo artwork: cool grey card stock,
-   soft window shadows, charcoal ink.
+   Colours sampled from the brand's logo artwork: neutral grey card stock,
+   soft window shadows, near-black ink.
    ========================================================================== */
 
 :root {
-  --paper: #e7e6e4;
-  --paper-light: #f1f0ef;
-  --paper-dark: #d9d8d6;
-  --ink: #3d3d3d;
-  --ink-soft: #6e6e6c;
-  --ink-faint: #9a9a97;
-  --line: rgba(61, 61, 61, 0.16);
+  --paper: #cbcbcb;
+  --paper-light: #d4d4d4;
+  --paper-dark: #c2c2c2;
+  --ink: #181818;
+  --ink-soft: #3c3c3c;
+  --ink-faint: #5c5c5c;
+  --line: rgba(24, 24, 24, 0.18);
 
   --sans: "Montserrat", "Proxima Nova", "Helvetica Neue", Arial, sans-serif;
 
@@ -126,7 +126,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   border-bottom: 1px solid transparent;
 }
 .site-header.is-solid {
-  background: rgba(241, 240, 239, 0.92);
+  background: rgba(212, 212, 212, 0.92);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom-color: var(--line);
@@ -155,7 +155,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 .header-mark {
   grid-column: 2;
   display: block;
-  width: 40px;
+  width: 38px;
   opacity: 0;
   transform: translateY(-4px);
   pointer-events: none;
@@ -209,26 +209,16 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   display: grid;
   place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 80% 70% at 50% 45%, #ebeae8 0%, var(--paper) 55%, var(--paper-dark) 100%);
+  background: var(--paper-dark) url("../img/hero-paper.jpg?v=3") center / cover no-repeat;
 }
-
-/* Soft window-light shadows, as in the brand's own photography */
-.hero-light {
+/* fade the paper into the page colour so the hero has no hard edge */
+.hero::after {
+  content: "";
   position: absolute;
-  inset: -20%;
+  left: 0; right: 0; bottom: 0;
+  height: 120px;
+  background: linear-gradient(transparent, var(--paper-light));
   pointer-events: none;
-  background:
-    repeating-linear-gradient(118deg,
-      transparent 0 9vw,
-      rgba(40, 40, 40, 0.07) 9vw 17vw,
-      transparent 17vw 24vw);
-  filter: blur(38px);
-  animation: drift 18s ease-in-out infinite alternate;
-}
-@keyframes drift {
-  from { transform: translate3d(-2%, 0, 0) rotate(0deg); }
-  to   { transform: translate3d(2%, 1%, 0) rotate(1deg); }
 }
 
 .hero-inner {
@@ -241,7 +231,8 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 }
 
 .hero-logo {
-  width: clamp(190px, 26vw, 300px);
+  width: clamp(200px, 27vw, 320px);
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.18));
   animation: rise 1.4s var(--ease) both;
 }
 
@@ -262,6 +253,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 }
 
 .hero-scroll {
+  z-index: 1;
   position: absolute;
   left: 50%;
   bottom: 28px;
@@ -413,8 +405,7 @@ address { font-style: normal; margin-bottom: 28px; }
 
 .hours { list-style: none; margin: 0 0 14px; padding: 0; max-width: 300px; }
 .hours li {
-  display: flex;
-  justify-content: space-between;
+  display: block;
   padding: 9px 0;
   border-bottom: 1px solid var(--line);
   color: var(--ink-soft);
@@ -422,7 +413,7 @@ address { font-style: normal; margin-bottom: 28px; }
 .hours li.is-today { color: var(--ink); font-weight: 500; }
 
 .status { font-size: 12px; color: var(--ink-faint); margin-bottom: 32px; min-height: 1.7em; }
-.status.is-open { color: #5f7a5b; }
+.status.is-open { color: var(--ink); font-weight: 500; }
 
 .visit-links { display: flex; align-items: center; gap: 28px; }
 
@@ -492,7 +483,7 @@ address { font-style: normal; margin-bottom: 28px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-light, .hero-logo, .hero-sub, .hero-inner .btn { animation: none; }
+  .hero-logo, .hero-sub, .hero-inner .btn { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .quote { transition: none; }
 }

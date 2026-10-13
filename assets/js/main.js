@@ -87,38 +87,24 @@
     reveals.forEach((el) => el.classList.add("is-in"));
   }
 
-  // Opening hours: highlight today and show open/closed status (UK time)
-  const OPEN_DAYS = [1, 3, 5];
-  const OPEN = 16 * 60;
-  const CLOSE = 20 * 60 + 30;
-
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/London",
-    weekday: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23",
-  }).formatToParts(new Date());
-  const get = (t) => parts.find((p) => p.type === t).value;
-  const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
-  const mins = Number(get("hour")) * 60 + Number(get("minute"));
+  // Opening days: highlight today and say whether the studio is open (UK date)
+  const OPEN_DAYS = [1, 3, 4, 6]; // Mon, Wed, Thu, Sat
+  const names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const weekday = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", weekday: "long" }).format(new Date());
+  const day = names.indexOf(weekday);
 
   const todayRow = document.querySelector(`.hours li[data-day="${day}"]`);
   if (todayRow) todayRow.classList.add("is-today");
 
   const status = document.querySelector("[data-status]");
   if (status) {
-    const names = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const openToday = OPEN_DAYS.includes(day);
-    if (openToday && mins >= OPEN && mins < CLOSE) {
-      status.textContent = "Open now";
+    if (OPEN_DAYS.includes(day)) {
+      status.textContent = "Open today";
       status.classList.add("is-open");
-    } else if (openToday && mins < OPEN) {
-      status.textContent = "Opens today at 4pm";
     } else {
       let next = (day + 1) % 7;
       while (!OPEN_DAYS.includes(next)) next = (next + 1) % 7;
-      status.textContent = `Closed · opens ${next === (day + 1) % 7 ? "tomorrow" : names[next]} at 4pm`;
+      status.textContent = `Closed today · open ${next === (day + 1) % 7 ? "tomorrow" : names[next]}`;
     }
   }
 
