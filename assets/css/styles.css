@@ -272,7 +272,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 
 .treatments {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: clamp(20px, 3vw, 40px);
 }
 .treatment { text-align: center; }
@@ -336,7 +336,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   padding: 15px 0;
   border-bottom: 1px solid var(--line);
 }
-.price-list small { display: block; color: var(--ink-faint); font-size: 11px; letter-spacing: 0.06em; }
+.price-list small { display: block; max-width: 44ch; color: var(--ink-faint); font-size: 11px; letter-spacing: 0.06em; line-height: 1.6; margin-top: 2px; }
 .price-list li > span:last-child { white-space: nowrap; }
 
 .note {
@@ -465,7 +465,7 @@ address { font-style: normal; margin-bottom: 28px; }
   .header-inner { grid-template-columns: 1fr auto 1fr; }
   .header-mark { width: 34px; }
 
-  .treatments { grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .treatments { grid-template-columns: 1fr 1fr; gap: 36px 16px; }
   .treatment h3 { font-size: 10px; letter-spacing: 0.16em; }
   .treatment p { font-size: 12px; }
 
@@ -476,8 +476,9 @@ address { font-style: normal; margin-bottom: 28px; }
 }
 
 @media (max-width: 560px) {
-  .treatments { grid-template-columns: 1fr; gap: 44px; max-width: 280px; margin: 0 auto; }
-  .treatment h3 { font-size: 12px; letter-spacing: 0.24em; }
+  .treatments { gap: 28px 12px; }
+  .arch { margin-bottom: 14px; }
+  .treatment h3 { font-size: 10px; letter-spacing: 0.16em; }
   .tabs button { font-size: 10px; letter-spacing: 0.16em; }
 }
 
