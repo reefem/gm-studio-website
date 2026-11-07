@@ -113,7 +113,7 @@
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); // iPadOS reports as a Mac
   if (isIOS) {
     document.querySelectorAll("[data-directions]").forEach((link) => {
-      link.href = "https://maps.apple.com/?daddr=13A+Lyndhurst+Terrace,+Swalwell&ll=54.954216,-1.681824";
+      link.href = "https://maps.apple.com/?daddr=13A+Lyndhurst+Terrace,+Swalwell,+Newcastle+upon+Tyne+NE16+3DY,+United+Kingdom&dirflg=d";
     });
   }
 
