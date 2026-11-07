@@ -108,6 +108,15 @@
     }
   }
 
+  // Directions: Apple Maps on iPhone/iPad, Google Maps everywhere else
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); // iPadOS reports as a Mac
+  if (isIOS) {
+    document.querySelectorAll("[data-directions]").forEach((link) => {
+      link.href = "https://maps.apple.com/?daddr=13A+Lyndhurst+Terrace,+Swalwell&ll=54.954216,-1.681824";
+    });
+  }
+
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
   });

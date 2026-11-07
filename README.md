@@ -28,7 +28,7 @@ assets/favicon.svg
 
 ## Updating content
 
-- **Prices** are in the `#prices` section of `index.html`. They match the Fresha menu as of September 2026.
+- **Prices** are in the `#prices` section of `index.html`. They match the Fresha menu as of November 2026.
 - **Opening days** are in the `#visit` list. If they change, also update `OPEN_DAYS` in `assets/js/main.js` so the "Open today" note stays correct.
 - **Booking links** all point to the studio's Fresha booking page.
 - After editing CSS/JS, bump the `?v=` number on the links in `index.html` so browsers fetch the new version.

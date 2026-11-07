@@ -479,7 +479,9 @@ address { font-style: normal; margin-bottom: 28px; }
   .treatments { gap: 28px 12px; }
   .arch { margin-bottom: 14px; }
   .treatment h3 { font-size: 10px; letter-spacing: 0.16em; }
-  .tabs button { font-size: 10px; letter-spacing: 0.16em; }
+  .tabs { gap: 14px; justify-content: space-between; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { flex: none; white-space: nowrap; font-size: 9.5px; letter-spacing: 0.1em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
