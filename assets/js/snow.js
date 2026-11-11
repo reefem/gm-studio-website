@@ -22,11 +22,11 @@
     return {
       x: Math.random() * w,
       y: y ?? Math.random() * h,
-      r: 0.8 + depth * 2.2,
-      speed: 0.25 + depth * 0.75,
+      r: 0.9 + depth * depth * 3.6,
+      speed: 0.35 + depth * 1.0,
       drift: Math.random() * Math.PI * 2,
       sway: 0.3 + Math.random() * 0.6,
-      alpha: 0.45 + depth * 0.5,
+      alpha: 0.55 + depth * 0.45,
     };
   };
 
@@ -37,7 +37,7 @@
     canvas.width = w * dpr;
     canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const count = Math.round(Math.min(110, (w * h) / 12000)); // fewer flakes on phones
+    const count = Math.round(Math.min(320, (w * h) / 4500)); // scales with screen size, fewer on phones
     while (flakes.length < count) flakes.push(makeFlake());
     flakes.length = count;
   };
